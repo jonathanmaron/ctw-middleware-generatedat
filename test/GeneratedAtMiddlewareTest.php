@@ -23,12 +23,10 @@ class GeneratedAtMiddlewareTest extends AbstractCase
         ];
         $response     = Dispatcher::run($stack, $request);
 
-        $string = $response->getHeaderLine('X-Generated-At');
-
-        $this->assertEquals($generatedAt, $string);
+        $this->assertEquals($generatedAt, $response->getHeaderLine('X-Generated-At'));
     }
 
-    public function testGeneratedAtMiddleware2(): void
+    public function testGeneratedAtMiddlewareMicrotime(): void
     {
         $timestamp   = (int) microtime(false);
         $generatedAt = gmdate('Y-m-d\TH:i:s\Z', $timestamp);
@@ -40,8 +38,6 @@ class GeneratedAtMiddlewareTest extends AbstractCase
         ];
         $response     = Dispatcher::run($stack, $request);
 
-        $string = $response->getHeaderLine('X-Generated-At');
-
-        $this->assertEquals($generatedAt, $string);
+        $this->assertEquals($generatedAt, $response->getHeaderLine('X-Generated-At'));
     }
 }
