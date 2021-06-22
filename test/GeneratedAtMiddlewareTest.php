@@ -25,7 +25,7 @@ class GeneratedAtMiddlewareTest extends AbstractCase
         ];
         $response     = Dispatcher::run($stack, $request);
 
-        $this->assertEquals($generatedAt, $response->getHeaderLine('X-Generated-At'));
+        self::assertEquals($generatedAt, $response->getHeaderLine('X-Generated-At'));
     }
 
     public function testGeneratedAtMiddlewareMicrotime(): void
@@ -40,7 +40,7 @@ class GeneratedAtMiddlewareTest extends AbstractCase
         ];
         $response     = Dispatcher::run($stack, $request);
 
-        $this->assertEquals($generatedAt, $response->getHeaderLine('X-Generated-At'));
+        self::assertEquals($generatedAt, $response->getHeaderLine('X-Generated-At'));
     }
 
     private function getInstance(): GeneratedAtMiddleware
