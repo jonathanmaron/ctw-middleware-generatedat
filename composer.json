@@ -1,5 +1,5 @@
 {
-    "name": "ctw/ctw-middleware-generated-at",
+    "name": "ctw/ctw-middleware-generatedat",
     "description": "This PSR-15 middleware adds an X-Generated-At timestamp to the Response header.",
     "license": "BSD-3-Clause",
     "type": "library",
