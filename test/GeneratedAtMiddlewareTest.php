@@ -20,9 +20,7 @@ class GeneratedAtMiddlewareTest extends AbstractCase
             'REQUEST_TIME_FLOAT' => $timestamp,
         ];
         $request      = Factory::createServerRequest('GET', '/', $serverParams);
-        $stack        = [
-            $this->getInstance(),
-        ];
+        $stack        = [$this->getInstance()];
         $response     = Dispatcher::run($stack, $request);
 
         self::assertEquals($generatedAt, $response->getHeaderLine('X-Generated-At'));
@@ -35,9 +33,7 @@ class GeneratedAtMiddlewareTest extends AbstractCase
 
         $serverParams = [];
         $request      = Factory::createServerRequest('GET', '/', $serverParams);
-        $stack        = [
-            $this->getInstance(),
-        ];
+        $stack        = [$this->getInstance()];
         $response     = Dispatcher::run($stack, $request);
 
         self::assertEquals($generatedAt, $response->getHeaderLine('X-Generated-At'));

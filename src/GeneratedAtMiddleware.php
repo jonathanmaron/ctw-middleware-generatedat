@@ -9,16 +9,15 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class GeneratedAtMiddleware extends AbstractGeneratedAtMiddleware
 {
+    /**
+     * @var string
+     */
     private const HEADER = 'X-Generated-At';
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $server = $request->getServerParams();
-        if (isset($server['REQUEST_TIME_FLOAT'])) {
-            $timestamp = $server['REQUEST_TIME_FLOAT'];
-        } else {
-            $timestamp = microtime(false);
-        }
+        $timestamp = $server['REQUEST_TIME_FLOAT'] ?? microtime(false);
 
         $response    = $handler->handle($request);
         $generatedAt = gmdate('Y-m-d\TH:i:s\Z', (int) $timestamp);
