@@ -9,10 +9,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class GeneratedAtMiddleware extends AbstractGeneratedAtMiddleware
 {
-    /**
-     * @var string
-     */
-    private const HEADER = 'X-Generated-At';
+    private const string HEADER = 'X-Generated-At';
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
