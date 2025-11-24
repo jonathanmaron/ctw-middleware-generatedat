@@ -14,7 +14,8 @@ class GeneratedAtMiddleware extends AbstractGeneratedAtMiddleware
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $server = $request->getServerParams();
-        $timestamp = $server['REQUEST_TIME_FLOAT'] ?? microtime(false);
+        $timestamp = $server['REQUEST_TIME_FLOAT'] ?? microtime(true);
+        assert(is_float($timestamp) || is_int($timestamp));
 
         $response    = $handler->handle($request);
         $generatedAt = gmdate('Y-m-d\TH:i:s\Z', (int) $timestamp);
