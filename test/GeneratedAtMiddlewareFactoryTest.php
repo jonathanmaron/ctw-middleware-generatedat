@@ -49,7 +49,7 @@ final class GeneratedAtMiddlewareFactoryTest extends AbstractCase
      */
     public function testFactoryWorksWithPsr11Container(): void
     {
-        $container = $this->createMock(ContainerInterface::class);
+        $container = $this->createStub(ContainerInterface::class);
 
         $actual = $this->generatedAtMiddlewareFactory->__invoke($container);
 
