@@ -15,7 +15,9 @@ class GeneratedAtMiddleware extends AbstractGeneratedAtMiddleware
     {
         $server = $request->getServerParams();
         $timestamp = $server['REQUEST_TIME_FLOAT'] ?? microtime(true);
-        assert(is_float($timestamp) || is_int($timestamp));
+        if (!is_float($timestamp) && !is_int($timestamp)) {
+            throw new \InvalidArgumentException('REQUEST_TIME_FLOAT must be an int or float');
+        }
 
         $response    = $handler->handle($request);
         $generatedAt = gmdate('Y-m-d\TH:i:s\Z', (int) $timestamp);

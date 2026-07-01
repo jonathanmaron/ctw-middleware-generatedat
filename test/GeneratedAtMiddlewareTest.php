@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CtwTest\Middleware\GeneratedAtMiddleware;
 
-use AssertionError;
 use Ctw\Middleware\AbstractMiddleware;
 use Ctw\Middleware\GeneratedAtMiddleware\AbstractGeneratedAtMiddleware;
 use Ctw\Middleware\GeneratedAtMiddleware\GeneratedAtMiddleware;
@@ -329,21 +328,17 @@ final class GeneratedAtMiddlewareTest extends AbstractCase
     }
 
     /**
-     * Test that process() fails the numeric type assertion when REQUEST_TIME_FLOAT holds a non-numeric value.
+     * Test that process() rejects a REQUEST_TIME_FLOAT that is neither a float nor an int.
      */
-    public function testProcessTriggersAssertionFailureWhenRequestTimeFloatIsNonNumeric(): void
+    public function testProcessRejectsNonNumericRequestTimeFloat(): void
     {
-        if ('1' !== (string) ini_get('zend.assertions')) {
-            self::markTestSkipped('Runtime assertions are not active.');
-        }
-
         $serverParams = [
             'REQUEST_TIME_FLOAT' => 'not-a-number',
         ];
         $request      = Factory::createServerRequest('GET', '/', $serverParams);
         $stack        = [$this->generatedAtMiddleware];
 
-        $this->expectException(AssertionError::class);
+        $this->expectException(\InvalidArgumentException::class);
 
         Dispatcher::run($stack, $request);
     }
