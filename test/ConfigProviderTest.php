@@ -19,7 +19,7 @@ final class ConfigProviderTest extends AbstractCase
     }
 
     /**
-     * Test that invocation returns complete configuration array
+     * Test that __invoke() returns the complete configuration array when the provider is called.
      */
     public function testInvokeReturnsConfigurationArray(): void
     {
@@ -37,7 +37,7 @@ final class ConfigProviderTest extends AbstractCase
     }
 
     /**
-     * Test that configuration contains dependencies key
+     * Test that __invoke() includes the dependencies key when it returns the configuration array.
      */
     public function testInvokeReturnsDependenciesKey(): void
     {
@@ -47,7 +47,7 @@ final class ConfigProviderTest extends AbstractCase
     }
 
     /**
-     * Test that getDependencies returns factory mappings
+     * Test that getDependencies() returns the expected factory mappings when called.
      */
     public function testGetDependenciesReturnsFactoryMappings(): void
     {
@@ -63,7 +63,7 @@ final class ConfigProviderTest extends AbstractCase
     }
 
     /**
-     * Test that getDependencies contains factories key
+     * Test that getDependencies() includes the factories key when called.
      */
     public function testGetDependenciesContainsFactoriesKey(): void
     {
@@ -73,7 +73,7 @@ final class ConfigProviderTest extends AbstractCase
     }
 
     /**
-     * Test that middleware class is registered in factories
+     * Test that getDependencies() registers the middleware class as a factory key when called.
      */
     public function testMiddlewareIsRegisteredInFactories(): void
     {
@@ -85,7 +85,7 @@ final class ConfigProviderTest extends AbstractCase
     }
 
     /**
-     * Test that middleware factory is correctly mapped
+     * Test that getDependencies() maps the middleware to its factory class when called.
      */
     public function testMiddlewareFactoryIsCorrectlyMapped(): void
     {

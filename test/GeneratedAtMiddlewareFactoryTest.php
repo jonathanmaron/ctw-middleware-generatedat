@@ -20,7 +20,7 @@ final class GeneratedAtMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that factory returns expected class name
+     * Test that the factory returns a GeneratedAtMiddleware instance when invoked with a service manager container.
      */
     public function testFactoryReturnsExpectedClassName(): void
     {
@@ -32,7 +32,7 @@ final class GeneratedAtMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that factory creates new instance on each invocation
+     * Test that the factory returns a distinct middleware instance when invoked more than once.
      */
     public function testFactoryCreatesNewInstanceOnEachInvocation(): void
     {
@@ -45,7 +45,7 @@ final class GeneratedAtMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that factory works with any PSR-11 container
+     * Test that the factory returns a GeneratedAtMiddleware instance when invoked with any PSR-11 container.
      */
     public function testFactoryWorksWithPsr11Container(): void
     {
@@ -57,7 +57,7 @@ final class GeneratedAtMiddlewareFactoryTest extends AbstractCase
     }
 
     /**
-     * Test that factory invocation via callable syntax works
+     * Test that the factory returns a GeneratedAtMiddleware instance when invoked using direct callable syntax.
      */
     public function testFactoryInvocationViaCallableSyntax(): void
     {
